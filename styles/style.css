@@ -1,0 +1,1609 @@
+/* ==========================================================================
+   1. VARIABLES DE MARCA Y CONFIGURACIÓN INICIAL (Minimalismo Rústico)
+   ========================================================================== */
+:root {
+    --bg-principal: #FDFBF7;     /* Crema Hueso: Fondo rústico y limpio */
+    --color-primario: #52B2CF;   /* Turquesa Colcas: Acentos y badges */
+    --color-secundario: #4A3319; /* Marrón Tierra: Texto y contrastes elegantes */
+    --color-acento: #556B2F;     /* Verde Oliva: Detalles e interactividad */
+    --fuente-global: 'Arial', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Evita que el header fijo tape el contenido al usar enlaces del menú */
+    scroll-padding-top: 140px; 
+}
+
+body {
+    background-color: var(--bg-principal);
+    color: var(--color-secundario);
+    font-family: var(--fuente-global);
+    line-height: 1.6;
+    font-weight: 300; /* Tipografía delgada y premium */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   2. ENCABEZADO FIJO (Main Header)
+   ========================================================================== */
+/* ==========================================================================
+   ENCABEZADO PREMIUM CON BALANCE SIMÉTRICO EXTERIOR
+   ========================================================================== */
+.main-header {
+    background-color: var(--bg-principal);
+    display: flex;
+    justify-content: space-between; /* ¡Esta es la clave! Empuja el logo al extremo izquierdo y la navegación al extremo derecho */
+    align-items: center;            /* Alineación vertical perfecta al centro */
+    padding: 1rem 4rem;             /* Un poco más de aire a los lados para que respire en pantallas grandes */
+    border-bottom: 1px solid rgba(74, 51, 25, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* --- BLOQUE IZQUIERDO: Identidad de Marca --- */
+.header-identity {
+    display: flex;
+    align-items: center;
+}
+
+.header-identity .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.logo-circular {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(74, 51, 25, 0.05);
+}
+
+/* Tipografía Líquida Cursiva (Simula el cauce y movimiento del agua) */
+.brand-title {
+    font-family: var(--fuente-liquida);
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-secundario);
+    transition: color 0.4s ease;
+}
+
+.header-identity:hover .brand-title {
+    color: var(--color-primario); /* Reflejo turquesa de agua viva al pasar el mouse */
+}
+
+/* --- BLOQUE DERECHO: Navegación + Idioma empujados al extremo --- */
+.header-navigation {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Espaciado fijo entre el bloque del menú y el selector ES|EN */
+}
+
+/* El menú como una sola línea horizontal compacta */
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.2rem; /* Separación interna entre cada enlace */
+}
+
+.main-nav a {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    padding-bottom: 0.3rem;
+    position: relative;
+    color: var(--color-secundario);
+}
+
+.main-nav a:hover {
+    color: var(--color-primario);
+}
+
+/* Animación de onda expansiva suave en el subrayado */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-primario);
+    transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* Selector de Idioma integrado fluidamente al final */
+.language-selector {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.language-selector button {
+    background: none;
+    border: none;
+    color: var(--color-secundario);
+    cursor: pointer;
+    font-family: var(--fuente-global);
+    font-weight: 400;
+    font-size: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+.language-selector button.active,
+.language-selector button:hover {
+    color: var(--color-primario);
+    font-weight: bold;
+}
+
+.separator {
+    color: rgba(74, 51, 25, 0.25);
+    font-size: 0.8rem;
+    user-select: none;
+}
+    
+/* ==========================================================================
+   3. CONTENIDO (Secciones y Tarjetas de Servicio)
+   ========================================================================== */
+.hero-section {
+    width: 100%;
+    background-color: #000;
+}
+
+/* ==========================================================================
+   ESTILOS DEL BANNER PRINCIPAL (Efecto Portada de Perfil)
+   ========================================================================== */
+.video-container {
+    width: 100%;
+    background-color: var(--bg-principal);
+    overflow: hidden;
+}
+
+/* Aplicamos las mismas reglas exactas del video a la nueva imagen banner */
+.video-container video,
+.hero-banner-img {
+    width: 100%;
+    display: block;
+    max-height: 75vh;  /* Cubre el 75% del alto de la pantalla del usuario */
+    object-fit: cover; /* Recorta y centra la foto automáticamente como portada de Facebook */
+    object-position: center; /* Asegura que el paisaje de Yanque quede centrado */
+}
+
+/* ==========================================================================
+   SECCIÓN SOBRE NOSOTROS (Misión y Visión Divididas)
+   ========================================================================== */
+.filosofia-section {
+    padding: 5rem 4rem;
+    width: 100%;
+    background-color: var(--bg-principal);
+}
+
+/* Título Principal en Color Primario (Turquesa Colcas) */
+.filosofia-title {
+    font-family: var(--fuente-global);
+    color: var(--color-primario);
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    font-weight: 400;
+}
+
+/* 3. ¡Ajuste Maestro! El contenedor interno es el que ahora protege el ancho */
+.filosofia-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    max-width: 1200px; /* Amarramos los textos para que no se peguen a los bordes físicos del monitor */
+    margin: 0 auto;    /* Centra el bloque de las dos columnas de forma invisible */
+    padding: 0 4rem;   /* Le devolvemos el aire elegante a los costados de la lectura */
+}
+
+/* Cajas individuales para Misión y Visión */
+.filosofia-box {
+    flex: 1; /* Hace que ambas cajas midan exactamente el 50% del espacio disponible */
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Subtítulos internos (Misión / Visión) */
+.filosofia-subtitle {
+    font-family: var(--fuente-global);
+    color: var(--color-secundario);
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Línea decorativa sutil debajo de cada subtítulo */
+.filosofia-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-primario);
+}
+
+/* El texto intacto del cliente con formato elegante y legible */
+.filosofia-text {
+    font-family: var(--fuente-global);
+    color: var(--color-secundario);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    text-align: justify; /* Justificado sutil para mantener el orden minimalista */
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-primario);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   NUEVA SECCIÓN DE EXPERIENCIAS ESTRELLA (Simetría e Impacto)
+   ========================================================================== */
+.experiencias-seccion {
+    width: 100%;
+    background-color: var(--bg-principal);
+    padding: 5rem 0;
+}
+
+/* Cabecera de la Sección */
+.experiencias-header {
+    max-width: 1200px;
+    margin: 0 auto 3.5rem auto;
+    padding: 0 4rem;
+    text-align: center;
+}
+
+.experiencias-main-title {
+    font-family: var(--fuente-global);
+    color: var(--color-primario);
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.experiencias-main-desc {
+    color: var(--color-secundario);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.85;
+}
+
+/* El Grid Fluido de 2 Columnas Infinitas */
+.grid-experiencias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+.experiencia-card {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(74, 51, 25, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(74, 51, 25, 0.02);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.experiencia-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(74, 51, 25, 0.06);
+}
+
+/* Contenedor de la imagen preparado para la espera */
+.card-image-box {
+    width: 100%;
+    height: 280px; 
+    overflow: hidden;
+    position: relative;
+    background-color: #EAE5DB; /* Fondo crema/gris rústico base por si no hay señal */
+}
+
+/* La imagen oculta su opacidad ligeramente hasta que el JS la refresque */
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    opacity: 0.9; /* Un toque sutil de transparencia mientras espera */
+}
+
+/* Cuando el mouse pasa por encima, si la foto ya cargó, hace su zoom elegante */
+.experiencia-card:hover .card-img {
+    transform: scale(1.04);
+    opacity: 1; /* Brillo completo al interactuar */
+}
+
+/* ==========================================================================
+   EFECTO SKELETON: Animación de pulsación para la espera del Sheet
+   ========================================================================== */
+.card-image-box.loading-skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Crea un reflejo de luz diagonal que simula carga */
+    background: linear-gradient(
+        90deg,
+        rgba(234, 229, 219, 0) 0%,
+        rgba(253, 251, 247, 0.6) 50%,
+        rgba(234, 229, 219, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: pulsacionCarga 1.6s infinite linear;
+    pointer-events: none; /* Evita que estorbe los clics */
+}
+
+/* Animación matemática para mover el reflejo de izquierda a derecha de forma infinita */
+@keyframes pulsacionCarga {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.card-content {
+    padding: 1.5rem; /* Reducimos drásticamente el espacio interno superior e inferior */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Barra de acciones con precio y botones, ahora más compacta y elegante en 3 columnas */
+.card-action-bar {
+    display: flex;
+    border-top: 1px solid rgba(74, 51, 25, 0.08);
+    border-bottom: 1px solid rgba(74, 51, 25, 0.08);
+    padding: 0.8rem 0; /* Un poco más compacto */
+    margin-bottom: 1.5rem; /* Empuja el título masivo elegantemente hacia abajo */
+}
+
+/* Reducimos una pizca el tamaño de la fuente para que el texto largo de los precios entre en una sola línea */
+.action-label {
+    font-size: 0.65rem; /* Ajuste milimétrico de lectura premium */
+    text-transform: uppercase;
+    color: var(--color-secundario);
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.2rem;
+}
+
+.action-value {
+    font-size: 1.15rem; /* Súper legible y compacto */
+    font-weight: bold;
+    color: var(--color-secundario);
+    letter-spacing: -0.5px; /* Junta levemente los números estilo catálogo moderno */
+}
+
+.action-column {
+    flex: 1; /* Distribuye las 3 columnas al mismo ancho exacto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Líneas separadoras internas discretas */
+.action-column:not(:last-child) {
+    border-right: 1px solid rgba(74, 51, 25, 0.08);
+}
+
+/* Columna de Precio */
+.price-box {
+    align-items: flex-start; /* Alineado a la izquierda para el precio */
+    padding-left: 0.5rem;
+}
+
+.action-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--color-secundario);
+    opacity: 0.6;
+    letter-spacing: 1px;
+    margin-bottom: 0.15rem;
+}
+
+.action-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-secundario);
+}
+
+/* Botones de Acción */
+.card-btn-details,
+.card-btn-whatsapp {
+    width: 85%;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+
+
+/* Botón de Detalles (Abre Modal) */
+.card-btn-details {
+    background-color: transparent;
+    border: 1px solid var(--color-secundario);
+    color: var(--color-secundario);
+}
+
+.card-btn-details:hover {
+    background-color: var(--color-secundario);
+    color: #FFFFFF;
+}
+
+/* Botón de WhatsApp (Agendar) */
+.card-btn-whatsapp {
+    background-color: var(--color-acento);
+    border: 1px solid var(--color-acento);
+    color: #FFFFFF;
+}
+
+.card-btn-whatsapp:hover {
+    background-color: #3f5220; /* Oscurecimiento sutil del verde oliva */
+    border-color: #3f5220;
+}
+
+/* TÍTULO GRANDE EN LA PARTE INFERIOR */
+.card-title-massive {
+    font-family: var(--fuente-global);
+    color: var(--color-secundario);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
+/* ==========================================================================
+   SECCIÓN: MOTOR 5 - CARRUSEL DE VIDEOS VERTICALES (ESTILO TIKTOK)
+   ========================================================================== */
+
+.tiktok-carousel-section {
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
+    padding: 0 1.5rem;
+    position: relative;
+}
+
+/* Envoltorio del carrusel para posicionar las flechas de control absolute */
+.tiktok-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Contenedor dinámico con scroll horizontal protegido */
+.tiktok-carousel-container {
+    display: flex;
+    gap: 1rem; /* Separación limpia entre videos */
+    overflow-x: auto; /* Permite el deslizamiento horizontal */
+    scroll-behavior: smooth; /* Hace que el paso por click sea fluido */
+    scroll-snap-type: x mandatory; /* Fuerza a que el video se encaje perfecto al frenar */
+    width: 100%;
+    padding: 1rem 0;
+    
+    /* Oculta la barra de scroll fea en Chrome, Safari y Opera */
+    background: transparent;
+}
+
+.tiktok-carousel-container::-webkit-scrollbar {
+    display: none; 
+}
+
+/* Oculta la barra de scroll en Firefox y Edge */
+.tiktok-carousel-container {
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* LA REGLA MAESTRA: El elemento de video individual */
+.tiktok-video-card {
+    /* MATEMÁTICA PARA COMPUTADORA: 5 videos por fila exacta */
+    /* Cada uno mide el 20% del total menos una parte proporcional del gap */
+    flex: 0 0 calc((100% - 4rem) / 5); 
+    
+    aspect-ratio: 9 / 16; /* Forzado estricto a formato vertical tipo TikTok */
+    background-color: #000000; /* Fondo negro elegante mientras carga el video */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(74, 51, 25, 0.04);
+    scroll-snap-align: start; /* Punto de anclaje para el scroll táctil */
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.tiktok-video-card:hover {
+    transform: scale(1.02); /* Reacción sutil premium al pasar el mouse */
+}
+
+/* Estilo para los reproductores que inyectará el JS (pueden ser videos nativos o links embed) */
+.tiktok-video-card video,
+.tiktok-video-card iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+}
+
+/* BOTONES DE CONTROL (Flechas laterales de click en click) */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(253, 251, 247, 0.9); /* Fondo crema translúcido a juego */
+    border: 1px solid rgba(74, 51, 25, 0.1);
+    color: var(--color-secundario);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.carousel-control:hover {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+}
+
+/* Posicionamiento quirúrgico de las flechas fuera de la zona de videos */
+.carousel-control.prev {
+    left: -20px;
+}
+
+.carousel-control.next {
+    right: -20px;
+}
+
+/* ==========================================================================
+   SECCIÓN: TARJETAS SECUNDARIAS COMPACTAS (Camping, Pesca, Parrilla)
+   ========================================================================== */
+
+/* Contenedor en malla: Ajusta las 3 tarjetas en una sola fila horizontal */
+.grid-experiencias-secundarias {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas exactamente iguales */
+    gap: 2rem; /* Espaciado elegante entre tarjetas */
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.subseccion-title {
+    font-size: 1.8rem;
+    font-weight: 400;                     /* Tipografía ligeramente marcada pero limpia */
+    color: var(--color-secundario);        /* Tu Marrón Tierra rústico */
+    text-align: center;                   /* ¡Adiós al aburrido alineado izquierdo! */
+    text-transform: uppercase;            /* Mayúsculas estilizadas */
+    letter-spacing: 2px;                  /* Separación elegante entre letras */
+    margin: 3.5rem auto 2.5rem auto;       /* Margen equilibrado para que respire la sección */
+    position: relative;
+    padding-bottom: 12px;
+    width: 100%;
+    max-width: 600px;                     /* Control de ancho para el centrado */
+}
+
+/* Línea sutil de adorno inferior rústico (Turquesa Colcas) */
+.subseccion-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);         /* Centrado milimétrico de la barra */
+    width: 60px;                          /* Línea minimalista corta */
+    height: 3px;                          /* Grosor fino y limpio */
+    background-color: var(--color-primario); /* Tu Turquesa Colcas de acento */
+    border-radius: 2px;
+}
+
+/* La tarjeta individual compacta: Hereda el estilo rústico premium */
+.experiencia-card-secundaria {
+    background-color: #ffffff;
+    border: 1px solid rgba(74, 51, 25, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(74, 51, 25, 0.02);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efecto Hover: Elevación milimétrica idéntica a la principal */
+.experiencia-card-secundaria:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(74, 51, 25, 0.06);
+}
+
+/* Caja de Imagen: Más baja (200px) para mantener la proporción compacta */
+.card-sec-image-box {
+    width: 100%;
+    height: 200px; /* Reducido quirúrgicamente para diferenciarlo de las estrella */
+    overflow: hidden;
+    background-color: #f0f0f0; /* Color base mientras carga la imagen del Sheet */
+}
+
+/* Imagen fluida con efecto zoom elegante */
+.card-sec-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experiencia-card-secundaria:hover .card-sec-img {
+    transform: scale(1.05); /* Zoom sutil premium */
+}
+
+/* Contenido interno de la tarjeta compacta */
+.card-sec-content {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center; /* Centra el título y el botón para una armonía perfecta */
+    text-align: center;
+}
+
+/* Título de la actividad: Destacado pero sin ser masivo */
+.card-sec-content h4 {
+    font-size: 1.25rem;
+    color: var(--color-secundario);
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* Botón de Detalles Rústico Compacto */
+.card-btn-details-sec {
+    background-color: transparent;
+    color: var(--color-secundario);
+    border: 1px solid rgba(74, 51, 25, 0.2);
+    border-radius: 6px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; /* Ocupa todo el ancho disponible dentro de su pad para fácil click */
+    max-width: 150px; /* Evita que se estire demasiado en pantallas grandes */
+}
+
+/* Cambio de color interactivo al pasar el mouse */
+.card-btn-details-sec:hover {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    border-color: var(--color-secundario);
+}
+
+/* ==========================================================================
+   SECCIÓN: PUNTOS TURÍSTICOS (4 en fila con Doble Botón Interactivos)
+   ========================================================================== */
+
+/* Contenedor en malla: Ajusta las 4 tarjetas en una sola fila en pantallas grandes */
+.grid-puntos-turisticos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Divide la fila exactamente en 4 columnas iguales */
+    gap: 1.5rem; /* Espaciado milimétrico optimizado para 4 elementos */
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Grupo de botones en paralelo: Alinea Detalles y Ubicación lado a lado */
+.btn-group-turismo {
+    display: flex;
+    gap: 0.5rem; /* Separación sutil entre ambos botones */
+    width: 100%; /* Ocupa todo el ancho de la caja de contenido */
+    margin-top: 0.5rem; /* Separación elegante respecto al título H4 */
+}
+
+/* Modificación de botones internos para que quepan perfectamente compartiendo el espacio */
+.btn-group-turismo .card-btn-details-sec,
+.btn-group-turismo .card-btn-map {
+    flex: 1; /* Distribuye el espacio 50% y 50% de manera matemática exacta */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px; /* Altura estandarizada y cómoda para el toque táctil en celulares */
+    font-size: 0.8rem; /* Tipografía milimétricamente ajustada para evitar desbordes */
+    font-weight: 400;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Quita el subrayado por defecto de la etiqueta <a> */
+}
+
+/* Estilo rústico para el botón de Detalles (Transparente con borde) */
+.btn-group-turismo .card-btn-details-sec {
+    background-color: transparent;
+    color: var(--color-secundario);
+    border: 1px solid rgba(74, 51, 25, 0.2);
+}
+
+.btn-group-turismo .card-btn-details-sec:hover {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    border-color: var(--color-secundario);
+}
+
+/* Estilo premium para el botón de Ubicación (Fondo tierra con texto claro) */
+.btn-group-turismo .card-btn-map {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    border: 1px solid var(--color-secundario);
+}
+
+.btn-group-turismo .card-btn-map:hover {
+    background-color: var(--color-acento); /* Cambia a verde oliva para dar feedback de mapa activo */
+    border-color: var(--color-acento);
+}
+
+/* Contenedor general del bloque separado de las tarjetas */
+.policies-accordion-box {
+    max-width: 1200px; /* Ampliamos el ancho máximo para que entren cómodos en fila */
+    margin: 4rem auto 1rem auto; /* Separación proporcional de las tarjetas */
+    padding: 0 1.5rem;
+}
+
+/* Subtítulo de la sección de políticas */
+.policies-accordion-title {
+    color: var(--color-secundario);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* EL CAMBIO CLAVE: El contenedor pasa de 'column' a 'row' (Fila horizontal) */
+.policies-accordion {
+    display: flex;
+    flex-direction: row; /* Alineación horizontal en computadoras */
+    gap: 1.5rem; /* Espaciado más amplio y elegante entre tarjetas laterales */
+    align-items: flex-start; /* Evita que las tarjetas se estiren feo si una tiene más texto que otra */
+}
+
+/* Estilo para cada tarjeta desplegable individual (Se calcula el ancho proporcional) */
+.policy-item {
+    flex: 1; /* Esto hace que cada una de las 3 tarjetas ocupe exactamente el mismo ancho */
+    background-color: rgba(74, 51, 21, 0.03); /* Un fondo marrón tierra ultra suave */
+    border: 1px solid rgba(74, 51, 21, 0.08);
+    border-radius: 6px;
+    padding: 0.2rem;
+    transition: all 0.3s ease;
+}
+
+/* Efecto visual cuando el usuario tiene abierto un elemento */
+.policy-item[open] {
+    background-color: #ffffff;
+    border-color: var(--color-primario); /* Borde Turquesa Colcas al abrir */
+    box-shadow: 0 6px 16px rgba(82, 178, 207, 0.1);
+}
+
+/* Estilo para la pestaña interactiva superior (El botón del acordeón) */
+.policy-item summary {
+    padding: 1rem;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--color-secundario);
+    cursor: pointer;
+    list-style: none; /* Esconde la flecha fea por defecto en Chrome/Firefox */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Símbolo interactivo rústico native */
+.policy-item summary::after {
+    content: '＋';
+    font-size: 1.1rem;
+    color: var(--color-acento); /* Verde oliva para los símbolos interactivos */
+    transition: transform 0.3s ease;
+}
+
+/* Rotación matemática de la flecha cuando el componente cambia a estado abierto */
+.policy-item[open] summary::after {
+    content: '－';
+    color: var(--color-primario);
+}
+
+/* Bloque interno donde reside el texto explicativo */
+.policy-content {
+    padding: 0 1rem 1.2rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-secundario);
+    text-align: justify;
+}
+
+/* Resaltador para el ejemplo de las pozas de S/20 */
+.policy-accent-text {
+    display: inline-block;
+    background-color: rgba(85, 107, 47, 0.1); /* Fondo verde oliva suave */
+    color: var(--color-acento);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+/* Estilo para la lista de viñetas de las cancelaciones médicas */
+.policy-bullets-list {
+    margin-top: 0.8rem;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.policy-bullets-list li {
+    list-style-type: square; /* Viñetas cuadradas rústicas */
+    color: var(--color-secundario);
+}
+
+/* ==========================================================================
+   5. INTERFAZ MODAL OCULTA (Con Soporte de Scroll para Pantallas Chicas)
+   ========================================================================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(74, 51, 25, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+/* CAJA BLANCA: Ajustada con límites físicos y scrollbox interno */
+.modal-content {
+    background-color: var(--bg-principal);
+    padding: 2.5rem 2rem; /* Reducimos levemente el aire interno para ganar espacio de lectura */
+    border-radius: 4px;
+    max-width: 550px;
+    width: 90%;
+    position: relative;
+    
+    /* 🛠️ SOLUCIÓN PARA GALAXY A56 / A21: */
+    max-height: 85vh;    /* El modal nunca medirá más del 85% del alto de la pantalla del celular */
+    overflow-y: auto;    /* Si el texto supera el espacio asignado, activa el scroller automáticamente */
+    overflow-x: hidden;  /* Prohíbe terminantemente el desplazamiento horizontal molesto */
+}
+
+.close-modal {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;        /* Asegura que el botón de cerrar flote siempre arriba del texto al scrolear */
+}
+
+/* ==========================================================================
+   CONTROL DE VISIBILIDAD DINÁMICA DEL MODAL (Requerido por JS)
+   ========================================================================== */
+.modal.hidden {
+    display: none !important;
+}
+
+.modal-visible {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Sección Artesanías */
+.seccion-artesanias {
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+}
+
+/* Ajuste del contenedor principal para asimilar fotos verticales de alta calidad */
+.artesanias-container {
+    display: flex;
+    gap: 4rem;                  /* Espacio generoso para que no se peleen ni se empujen */
+    align-items: flex-start;    /* Alinea el inicio de las letras perfectamente con el borde superior de la foto */
+    margin-top: 2.5rem;
+}
+
+/* Control de la caja para que se acople perfectamente a la altura de las letras */
+.artesanias-img-box {
+    width: 320px;          /* Ancho fijo perfecto para mantener la escala vertical de la artesana */
+    align-self: stretch;   /* ¡MAGIA! Fuerza a la foto a tener EXACTAMENTE la misma altura que el bloque de texto */
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(74, 51, 25, 0.08);
+}
+
+.artesanias-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* Hace que la foto de la dueña cubra todo el recuadro sin deformar su facha */
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.artesanias-img:hover {
+    transform: scale(1.03);
+}
+
+/* El bloque de las letras se expande libremente */
+.artesanias-text {
+    flex: 1;               /* Absorbe todo el ancho restante sin pelear ni empujar a la foto */
+    display: flex;
+    align-items: center;   /* Centra el párrafo verticalmente si el texto es ligeramente más corto */
+}
+
+.artesanias-text p {
+    text-align: justify;   /* Distribución limpia y uniforme en los bordes */
+    font-size: 1.15rem;    /* Un toque de tamaño para rellenar la altura de forma premium */
+    line-height: 1.9;      /* Espaciado elegante para que el texto respire y sume altura armónica */
+    margin: 0;
+}
+
+/* Espacio reservado para la nueva sección de fotos de Google Sheets */
+.taller-galeria-seccion {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(74, 51, 25, 0.1);
+}
+
+.galeria-subtitulo {
+    font-size: 1.8rem;
+    color: var(--color-secundario);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Rejilla adaptativa (Responsive Grid) para los productos del taller */
+.grid-galeria-taller {
+    display: grid;
+    /* Crea columnas automáticas de mínimo 250px según el ancho del celular */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Contenedor individual de cada foto que traerá el script de Sheets */
+.galeria-item {
+    aspect-ratio: 1 / 1; /* Obliga a que la caja mantenga un formato perfectamente cuadrado */
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: rgba(74, 51, 25, 0.03);
+    box-shadow: 0 4px 12px rgba(74, 51, 25, 0.05);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.galeria-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Sección Políticas de Pago */
+.seccion-politicas {
+    max-width: 800px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.politicas-card {
+    background-color: #FFFFFF;
+    padding: 2.5rem;
+    border-radius: 6px;
+    border: 1px solid rgba(74, 51, 25, 0.06);
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   4. PIE DE PÁGINA COMPLETO (Footer Maquetado de 3 Columnas)
+   ========================================================================== */
+.main-footer {
+    background-color: var(--color-secundario);
+    color: var(--bg-principal);
+    padding: 4rem 2rem 2rem 2rem;
+    margin-top: auto;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(253, 251, 247, 0.1);
+    padding-bottom: 3rem;
+}
+
+.footer-column h4 {
+    color: var(--color-primario);
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+}
+
+.footer-column p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.footer-icon {
+    width: 16px;
+    height: 16px;
+    filter: invert(1); /* Pone los iconos vectoriales en color blanco */
+}
+
+.footer-contact-item a:hover, .email-link:hover {
+    color: var(--color-primario);
+}
+
+.email-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.map-placeholder {
+    margin-top: 1rem;
+    background-color: rgba(253, 251, 247, 0.05);
+    border: 1px dashed rgba(253, 251, 247, 0.2);
+    padding: 1rem;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.map-placeholder:hover {
+    background-color: rgba(253, 251, 247, 0.1);
+    color: var(--color-primario);
+}
+
+/* Divisor sutil entre el contacto y las insignias */
+.footer-badges-divider {
+    margin: 1.5rem 0 1rem 0;
+    border-top: 1px solid rgba(253, 251, 247, 0.1);
+}
+
+/* Contenedor flexible para alinear las insignias verticalmente */
+.footer-badges-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* Subtítulo interno para la sección de servicios adicionales */
+.footer-sub-tit {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-color-light, #fdfbf7); /* Usa la variable de color claro o un fallback */
+    opacity: 0.9;
+}
+
+/* Ajuste de texto para las descripciones de las insignias */
+.footer-badge-text {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* Fila de Cierre del Footer */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-socials a:hover .social-icon {
+    transform: scale(1.15);
+    filter: invert(1) drop-shadow(0 0 4px var(--color-primario));
+}
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   5. INTERFAZ MODAL OCULTA
+   ========================================================================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(74, 51, 25, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+
+.modal-content {
+    background-color: var(--bg-principal);
+    padding: 3rem;
+    border-radius: 4px;
+    max-width: 550px;
+    width: 90%;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   6. RESPONSIVIDAD SENSORIAL (Adaptabilidad Avanzada para Dispositivos)
+   ========================================================================== */
+
+/* ------------------------------------------------------------------
+   NIVEL A: TABLETS Y COMPUTADORAS PEQUEÑAS (Ancho máximo: 992px)
+   ------------------------------------------------------------------ */
+@media (max-width: 992px) {
+    .main-header {
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: var(--bg-principal);
+    }
+    .header-navigation {
+        gap: 2rem;
+    }
+
+    .filosofia-section {
+        padding: 4rem 2rem;
+    }
+    .filosofia-container {
+        gap: 2.5rem;
+    }
+    
+    .main-nav ul {
+        gap: 1.5rem;
+    }
+    .experiencias-header { 
+        padding: 0 2rem; 
+    }
+    .grid-experiencias { 
+        gap: 2.5rem; 
+        padding: 0 2rem; 
+    }
+
+    .tiktok-video-card {
+        /* Pasa a 3 videos visibles en pantallas medianas */
+        flex: 0 0 calc((100% - 2rem) / 3);
+    }
+
+    .grid-experiencias-secundarias {
+        grid-template-columns: repeat(2, 1fr); /* En tablets se acomoda en 2 columnas */
+        gap: 1.5rem;
+    }
+
+    .grid-puntos-turisticos {
+        grid-template-columns: repeat(2, 1fr); /* En pantallas medianas pasa a un hermoso diseño de 2x2 */
+        gap: 1.5rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablet */
+        gap: 2.5rem;
+    }
+}
+
+/* ------------------------------------------------------------------
+   NIVEL B: SMARTPHONES ESTÁNDAR - GALAXY A56 (Ancho máximo: 768px)
+   Diseñado para resoluciones de 390px a 412px de ancho
+   ------------------------------------------------------------------ */
+@media (max-width: 768px) {
+    .main-header {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem 1rem 1rem 1rem;
+        text-align: center;
+        gap: 1rem;
+        position: sticky; 
+        top: 0;
+        z-index: 1000;
+        background-color: var(--bg-principal);
+    }
+
+    /* Ley: Logo y Título apilados verticalmente y centrados */
+    .header-identity {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .header-identity .logo-link {
+        flex-direction: column; 
+        gap: 0.5rem;
+    }
+
+    .logo-circular {
+        width: 65px; /* Redondeado y limpio, escala perfecto */
+        height: 65px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .brand-title {
+        font-size: 1.7rem;
+    }
+
+    /* Bloque de navegación abajo de la identidad */
+    .header-navigation {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .filosofia-title {
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    /* En teléfonos (Galaxy A56) dejamos de dividir a la mitad y los apilamos verticalmente */
+    .filosofia-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .filosofia-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .main-nav {
+        width: 100%;
+    }
+
+    /* Ajuste Maestro: Forzamos una sola línea horizontal sin cortes */
+    .main-nav ul {
+        display: flex;
+        flex-direction: row;       /* Asegura que sigan de izquierda a derecha */
+        flex-wrap: nowrap;         /* PROHIBIDO romperse en dos renglones */
+        justify-content: center;
+        align-items: center;
+        gap: 1.1rem;               /* Espacio compacto ideal para los 4 enlaces en 390px */
+        width: 100%;
+    }
+
+    .main-nav a {
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;     /* Reducido para ahorrar espacio horizontal crítico */
+        white-space: nowrap;       /* Evita que palabras como "Contáctanos" se rompan por la mitad */
+    }
+
+    /* Selector de idioma arriba a la derecha */
+    .language-selector {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.2rem;
+        background-color: rgba(74, 51, 25, 0.04);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+    }
+
+    /* Ajustes para la sección de experiencias en teléfonos estándar (Galaxy A56)*/
+   .experiencias-seccion { 
+        padding: 4rem 0; 
+    }
+    .experiencias-main-title { 
+        font-size: 1.8rem; 
+    }
+    .grid-experiencias { 
+        grid-template-columns: 1fr; 
+        gap: 3.5rem; 
+    }
+    .card-image-box { 
+        height: 240px; 
+    }
+    .card-title-massive { 
+        font-size: 1.6rem; 
+    }
+
+    .tiktok-video-card {
+        /* Muestra exactamente 2 videos por pantalla sin amontonarse */
+        flex: 0 0 calc((100% - 1rem) / 2);
+    }
+    
+    .tiktok-carousel-section {
+        padding: 0 1rem;
+    }
+    
+    /* En celulares las flechas estorban al deslizar con el dedo, mejor las ocultamos */
+    .carousel-control {
+        display: none;
+    }
+
+    .grid-experiencias-secundarias {
+        grid-template-columns: 1fr; /* En celulares baja a 1 sola columna vertical limpia */
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .card-sec-image-box {
+        height: 180px; /* Un toque más bajo en pantallas táctiles pequeñas */
+    }
+
+    .grid-puntos-turisticos {
+        grid-template-columns: 1fr; /* En celulares baja a 1 sola columna vertical limpia y espaciosa */
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    /* Pequeño ajuste para que los botones tengan buen tamaño en pantallas táctiles muy angostas */
+    .btn-group-turismo .card-btn-details-sec,
+    .btn-group-turismo .card-btn-map {
+        font-size: 0.85rem; 
+        height: 42px; /* Un toque más altos en celulares para facilitar el clic con el pulgar */
+    }
+
+/* Ajustes para la sección de políticas en teléfonos estándar (Galaxy A56) */
+    .policies-accordion {
+        flex-direction: column; /* Regresa a vertical automáticamente en pantallas táctiles */
+        gap: 0.8rem;
+    }
+    
+    .policies-accordion-box {
+        margin-top: 3rem;
+    }
+    
+    .policies-accordion-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .policy-item summary {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
+    
+    .policy-content {
+        font-size: 0.9rem;
+        padding: 0 0.8rem 1rem 0.8rem;
+    }
+
+    .artesanias-container {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .artesanias-img-box {
+        width: 100%;
+        max-width: 280px;
+        height: 340px;      /* Altura fija y cómoda para la foto en vertical dentro del celular */
+        align-self: auto;   /* Cancela el estiramiento de escritorio */
+        margin: 0 auto;
+    }
+
+    .artesanias-text p {
+        text-align: left;   /* Lectura natural en pantallas táctiles */
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0 0.5rem;
+    }
+
+    .artesanias-img-box {
+        width: 100%;
+        max-width: 280px;  /* Centra la foto vertical en el medio del celular */
+        height: 320px;     /* Altura perfecta para pantallas móviles */
+        margin: 0 auto;    /* Asegura que quede bien alineada al centro */
+    }
+    
+    .grid-galeria-taller {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Dos fotos por fila en pantallas chicas */
+        gap: 0.8rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-contact-item {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+/* ------------------------------------------------------------------
+   NIVEL C: SMARTPHONES ANGOSTOS / ANALÓGICOS - GALAXY A21 (Ancho máximo: 360px)
+   Ajustes matemáticos milimétricos para congelar el menú en una sola línea
+   ------------------------------------------------------------------ */
+@media (max-width: 360px) {
+    .main-header {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+        gap: 0.8rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: var(--bg-principal);
+    }
+
+    .logo-circular {
+        width: 58px; /* Reducción milimétrica proporcional */
+        height: 58px;
+    }
+
+    /* Ajustes milimétricos para pantallas angostas (Galaxy A21) */
+    .filosofia-section {
+        padding: 3rem 1rem;
+    }
+    .filosofia-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .brand-title {
+        font-size: 1.5rem;
+    }
+
+    /* Ajuste Extremo para la micro-pantalla de 360px */
+    .main-nav ul {
+        gap: 0.75rem;              /* Espaciado mínimo seguro pero cómodo al tacto */
+    }
+
+    .main-nav a {
+        font-size: 0.75rem;        /* Tipografía ligeramente más delgada */
+        letter-spacing: 0px;       /* Cero separación de letras para ganar valiosos píxeles */
+    }
+
+    .language-selector {
+        top: 0.8rem;
+        right: 0.8rem;
+        padding: 0.2rem 0.4rem;
+    }
+.experiencias-header { 
+        padding: 0 1rem; 
+        margin-bottom: 2rem; 
+    }
+    .grid-experiencias { 
+        padding: 0 1rem; 
+    }
+    .card-btn-details, 
+    .card-btn-whatsapp { 
+        width: 90%; 
+        font-size: 0.75rem; 
+    }
+    .card-content { 
+        padding: 1.2rem 1rem; 
+    }
+    .action-label {
+        font-size: 0.58rem; /* Encapsulado ultra-fino para pantallas de 360px */
+    }
+    .action-value {
+        font-size: 1rem;
+    }
+    .card-title-massive { 
+        font-size: 1.4rem; 
+    }
+    .subseccion-title {
+        font-size: 1.3rem;                /* Un tamaño más cómodo para pantallas verticales */
+        letter-spacing: 1px;              /* Ajustamos espaciado para que no salte de línea feo */
+        margin: 2.5rem auto 1.8rem auto;
+        padding-bottom: 8px;
+    }
+    
+    .subseccion-title::after {
+        width: 45px;
+        height: 2px;
+    }
+}

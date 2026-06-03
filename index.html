@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Colcas - Experiencias en Yanque</title>
+    <link rel="icon" href="images/presentacion/logo.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <!-- Encabezado Principal con Selector de Idioma -->
+    <header class="main-header">
+        <div class="header-identity">
+            <a href="index.html" class="logo-link">
+                <img src="images/presentacion/logo.jpeg" alt="Logo Las Colcas" class="logo-circular">
+                <span class="brand-title">Las Colcas</span>
+            </a>
+        </div>
+
+        <div class="header-navigation">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero" data-translate="nav-inicio">Inicio</a></li>
+                    <li><a href="#experiencias" data-translate="nav-actividades">Actividades</a></li>
+                    <li><a href="#artesanias" data-translate="nav-artesanias">Artesanías</a></li>
+                    <li><a href="#contacto" data-translate="nav-contacto">Contáctanos</a></li>
+                </ul>
+            </nav>
+
+            <div class="language-selector">
+                <button id="btn-es" class="active">ES</button>
+                <span class="separator">|</span>
+                <button id="btn-en">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Banner Principal -->
+        <section id="hero" class="hero-section">
+            <div class="video-container">
+                <img src="images/presentacion/banneryanque.jpg" alt="Banner Aguas Termales Las Colcas en Yanque" class="hero-banner-img">
+            </div>
+            
+            <!-- Sección Sobre Nosotros: Filosofía Organizacional -->
+            <section class="filosofia-section">
+                <h2 class="filosofia-title" data-translate="titulo-filosofia">Sobre Nosotros</h2>
+                    
+                <div class="filosofia-container">
+                    <!-- Caja de Misión -->
+                    <div class="filosofia-box">
+                        <h3 class="filosofia-subtitle" data-translate="sub-mision">Misión</h3>
+                        <p class="filosofia-text" data-translate="text-mision">
+                            En Las Colcas brindamos experiencias de descanso, aventura y conexión con la naturaleza en el corazón del valle del Colca, ofreciendo pozas termales naturales, kayak, camping y espacios recreativos en un entorno tranquilo y seguro. Nos comprometemos a ofrecer un servicio de calidad, haciendo que el visitante construya experiencia inolvidables a la lado de sus amigos , familia o simplemente para el o ella.
+                        </p>
+                    </div>
+                
+                    <!-- Caja de Visión -->
+                    <div class="filosofia-box">
+                        <h3 class="filosofia-subtitle" data-translate="sub-vision">Visión</h3>
+                        <p class="filosofia-text" data-translate="text-vision">
+                            Ser un destino turístico reconocido en el valle del Colca por ofrecer experiences naturales auténticas, sostenibles con la naturaleza y memorables, destacando por la calidad de nuestros servicios, el cuidado del entorno natural y la promoción de la cultura local, convirtiéndonos en un lugar donde las personas encuentren descanso, aventura y conexión con la esencia del Colca.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Sección de Experiencias Destacadas -->
+        <section id="experiencias" class="experiencias-seccion">
+    <div class="experiencias-header">
+        <h2 class="experiencias-main-title" data-translate="titulo-experiencias">Nuestras Experiencias Estrella</h2>
+        <p class="experiencias-main-desc" data-translate="desc-experiencias">Descubre las actividades más queridas de Las Colcas. Aguas termo-medicinales y aventura viva a orillas del majestuoso río en Yanque.</p>
+    </div>
+
+    <div class="grid-experiencias">
+        <article id="pozas" class="experiencia-card" data-servicio="termas">
+            <div class="card-image-box loading-skeleton">
+    <img id="img-pozo" src="images/actividades/pozasestrella.jpg" alt="Pozas Termales Las Colcas en Yanque" class="card-img">
+</div>
+            <div class="card-content">
+                <div class="card-action-bar">
+                    <div class="action-column price-box">
+                        <span class="action-label" data-translate="label-precio-pozas">Adulto / Niño (1h)</span>
+                        <span class="action-value">S/20 / S/10</span>
+                    </div>
+                    <div class="action-column btn-box">
+                        <button class="card-btn-details" data-modal="pozas" data-translate="btn-detalles">Detalles</button>
+                    </div>
+                    <div class="action-column btn-box">
+                        <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
+                    </div>
+                </div>
+                <h3 class="card-title-massive" data-translate="titulo-pozas">Pozas Termales</h3>
+            </div>
+        </article>
+        
+        <article id="kayak" class="experiencia-card" data-servicio="aventura">
+            <div class="card-image-box loading-skeleton">
+    <img id="img-kayak" src="images/actividades/kayakestrella.jpg" alt="Navegación en Kayak en Yanque" class="card-img">
+</div>
+            <div class="card-content">
+                <div class="card-action-bar">
+                    <div class="action-column price-box">
+                        <span class="action-label" data-translate="label-precio-kayak">Adulto / Niño (1h)</span>
+                        <span class="action-value">S/20 / S/10</span>
+                    </div>
+                    <div class="action-column btn-box">
+                        <button class="card-btn-details" data-modal="kayak" data-translate="btn-detalles">Detalles</button>
+                    </div>
+                    <div class="action-column btn-box">
+                        <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
+                    </div>
+                </div>
+                <h3 class="card-title-massive" data-translate="titulo-kayak">Kayak</h3>
+            </div>
+        </article>
+    </div>
+
+    <div class="tiktok-carousel-section">
+        <h3 class="subseccion-title" data-translate="titulo-tiktok-seccion">Nuestros Momentos en Video</h3>
+        <div class="tiktok-carousel-wrapper">
+            <button class="carousel-control prev" id="btn-tiktok-prev">❮</button>
+            
+            <div id="contenedor-tiktok-dinamico" class="tiktok-carousel-container">
+                </div>
+            
+            <button class="carousel-control next" id="btn-tiktok-next">❯</button>
+        </div>
+    </div>
+
+    <div class="secundarias-section">
+        <h3 class="subseccion-title" data-translate="titulo-actividades-sec">Más Actividades en el Establecimiento</h3>
+        <div class="grid-experiencias-secundarias">
+            
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-camping" src="images/actividades/placeholder.jpg" alt="Zonas de Camping en Las Colcas" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-camping">Camping</h4>
+                    <button class="card-btn-details-sec" data-modal="camping" data-translate="btn-detalles">Detalles</button>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-pesca" src="images/actividades/placeholder.jpg" alt="Pesca de Trucha en el Río Colca" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-pesca">Pesca</h4>
+                    <button class="card-btn-details-sec" data-modal="pesca" data-translate="btn-detalles">Detalles</button>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-parrilla" src="images/actividades/placeholder.jpg" alt="Zonas de Parrilla al aire libre" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-parrilla">Parrilla</h4>
+                    <button class="card-btn-details-sec" data-modal="parrilla" data-translate="btn-detalles">Detalles</button>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <div class="turismo-section">
+        <h3 class="subseccion-title" data-translate="titulo-puntos-tur">Puntos Turísticos en camino a las Termas</h3>
+        <div class="grid-puntos-turisticos">
+            
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-mirador" src="images/actividades/placeholder.jpg" alt="Mirador Natural del Río Colca" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-mirador">Mirador del Río Colca</h4>
+                    <div class="btn-group-turismo">
+                        <button class="card-btn-details-sec" data-modal="mirador" data-translate="btn-detalles">Detalles</button>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="card-btn-map" data-translate="btn-ubicacion">📍 Ubicación</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-anfitearo" src="images/actividades/placeholder.jpg" alt="Anfiteatro de Occolle" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-occolle">Anfiteatro de Occolle</h4>
+                    <div class="btn-group-turismo">
+                        <button class="card-btn-details-sec" data-modal="anfitearo" data-translate="btn-detalles">Detalles</button>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="card-btn-map" data-translate="btn-ubicacion">📍 Ubicación</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-tumbas" src="images/actividades/placeholder.jpg" alt="Tumbas Colgantes en Yanque" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-tumbas">Tumbas Colgantes</h4>
+                    <div class="btn-group-turismo">
+                        <button class="card-btn-details-sec" data-modal="tumbas" data-translate="btn-detalles">Detalles</button>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="card-btn-map" data-translate="btn-ubicacion">📍 Ubicación</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-uyouyo" src="images/actividades/placeholder.jpg" alt="Complejo Arqueológico Uyo Uyo" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-uyouyo">Uyo Uyo</h4>
+                    <div class="btn-group-turismo">
+                        <button class="card-btn-details-sec" data-modal="uyouyo" data-translate="btn-detalles">Detalles</button>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="card-btn-map" data-translate="btn-ubicacion">📍 Ubicación</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <div class="policies-accordion-box">
+        <h3 class="policies-accordion-title" data-translate="pol-tit-seccion">Condiciones y Políticas de Reserva</h3>
+        <div class="policies-accordion">
+            <details class="policy-item">
+                <summary data-translate="faq-pagos-tit">💰 Métodos de Pago Disponibles</summary>
+                <div class="policy-content">
+                    <p data-translate="faq-pagos-desc">Los pagos se realizan por adelantado y pueden hacerse en efectivo o mediante Yape / Plin.</p>
+                </div>
+            </details>
+            <details class="policy-item">
+                <summary data-translate="faq-reserva-tit">📅 ¿Cómo funcionan las Reservaciones?</summary>
+                <div class="policy-content">
+                    <p data-translate="faq-reserva-desc">Las reservas deben realizarse con un mínimo de 8 horas de anticipación, abonando el 50 % del servicio.</p>
+                </div>
+            </details>
+            <details class="policy-item">
+                <summary data-translate="faq-cancel-tit">🛡️ Política de Cancelación y Reembolso</summary>
+                <div class="policy-content">
+                    <p data-translate="faq-cancel-intro">El reembolso aplica bajo criterios médicos o fallas del servicio.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+        <!-- Sección Artesanías -->
+        <section id="artesanias" class="seccion-artesanias">
+            <h2 class="section-title" data-translate="titulo-artesanias">Artesanías de Yanque</h2>
+            
+            <div class="artesanias-container">
+                <div class="artesanias-img-box">
+                    <img src="images/turismo/artesana.jpg" alt="Taller de Bordados Tradicionales de Yanque" class="artesanias-img">
+                </div>
+                <div class="artesanias-text">
+                    <p data-translate="desc-artesanias">
+                        En Las Colcas también valoramos y compartimos la esencia cultural del valle del Cañón del Colca a través de artesanías elaboradas con dedicación e inspiración en las tradiciones andinas de Yanque. Cada pieza refleja el arte, los colores y la identidad de nuestra tierra, combinando trabajo manual, detalles bordados y diseños únicos que transmiten calidez y autenticidad. Entre nuestras creaciones encontrarás bolsos, marcapáginas, individuales bordados y otros productos artesanales hechos con mucho detalle y dedicación por nuestras manos.
+                    </p>
+                </div>
+            </div>
+
+            <div class="taller-galeria-seccion">
+                <h3 class="galeria-subtitulo" data-translate="titulo-galeria-taller">Nuestro Taller y Creaciones</h3>
+                
+                <div id="galeria-taller-dinamica" class="grid-galeria-taller">
+                </div>
+            </div>
+        </section>
+    </main>
+
+<!-- Pie de Página -->
+<footer id="contacto" class="main-footer">
+    <div class="footer-grid">
+        <!-- Columna 1: Horarios (Intacta) -->
+        <div class="footer-column">
+            <h4 data-translate="footer-horario-tit">Horario de Reservas</h4>
+            <p data-translate="footer-horario-desc">Lunes a Domingo<br>7:00 AM – 9:00 PM</p>
+        </div>
+
+        <!-- Columna 2: Contacto + Nuevos Servicios y Pagos locales -->
+        <div class="footer-column">
+            <h4 data-translate="footer-contacto-tit">Contacto Directo</h4>
+            
+            <div class="footer-contact-item">
+                <img src="images/icons/telephone-inbound-fill.svg" alt="Teléfono" class="footer-icon">
+                <a href="tel:+51956896113">+51 956 896 113</a>
+            </div>
+            
+            <div class="footer-contact-item">
+                <img src="images/icons/whatsapp.svg" alt="WhatsApp" class="footer-icon">
+                <a href="https://wa.me/51900962294" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
+            </div>
+            
+            <div class="footer-contact-item">
+                <img src="images/icons/envelope-at-fill.svg" alt="Email" class="footer-icon">
+                <a href="mailto:lascolcas2000@gmail.com" class="email-link">lascolcas2000@gmail.com</a>
+            </div>
+
+            <!-- Divisor sutil interno para separar los datos de contacto de las insignias -->
+           <div class="footer-badges-divider"></div>
+
+            <!-- Título de subsección corregido con clave de traducción única -->
+            <div class="footer-sub-tit" data-translate="footer-servicios-tit">Servicios Adicionales</div>
+
+            <!-- Contenedor de Insignias optimizado sin estilos en línea -->
+            <div class="footer-badges-container">
+                <div class="footer-contact-item">
+                    <img src="images/icons/paw.svg" alt="Huella Mascota" class="footer-icon">
+                    <span class="footer-badge-text" data-translate="footer-pet-friendly">Establecimiento Pet Friendly</span>
+                </div>
+                <div class="footer-contact-item">
+                    <img src="images/icons/credit-card-fill.svg" alt="Tarjeta Pago" class="footer-icon">
+                    <span class="footer-badge-text" data-translate="footer-pagos-locales">Aceptamos Yape, Plin y Transferencias</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna 3: Ubicación (Intacta) -->
+        <div class="footer-column">
+            <h4 data-translate="footer-ubicacion-tit">Nuestra Ubicación</h4>
+            <p data-translate="footer-ubicacion-desc">Baños Termales Chininia, Yanque, Valle del Colca, Arequipa, Perú.</p>
+            <a href="https://www.google.com/maps?q=-15.6431942,-71.6616726&z=17&hl=es" target="_blank" rel="noopener noreferrer" class="map-link-wrapper">
+                <div class="map-placeholder">
+                    <span data-translate="ver-mapa">📍 Ubicación en las Orillas del Río</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Fila Inferior: Redes sociales y Copyright (Estructura Original Asegurada) -->
+    <div class="footer-bottom">
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/share/1DadiKhStY/" target="_blank" rel="noopener noreferrer">
+                <img src="images/icons/facebook.svg" alt="Facebook" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com/banostermaleschininia/?igsh=MTJpeXl1cnI1dHVONA==" target="_blank" rel="noopener noreferrer">
+                <img src="images/icons/instagram.svg" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.tiktok.com/@aguas_termales_y_kayak?_r=1&_t=ZS-96llslFsxuq" target="_blank" rel="noopener noreferrer">
+                <img src="images/icons/tiktok.svg" alt="TikTok" class="social-icon">
+            </a>
+        </div>
+        <p class="copyright">Las Colcas © 2026. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+    <!-- Estructura del Modal Dinámico Corregida para JS -->
+    <div id="modal-dinamico" class="modal hidden">
+        <div class="modal-content">
+            <span id="modal-cerrar" class="close-modal">&times;</span>
+            <h2 id="modal-titulo" class="filosofia-subtitle" style="margin-bottom: 1.5rem;"></h2>
+            <div id="modal-cuerpo" class="filosofia-text" style="text-align: justify;"></div>
+        </div>
+    </div>
+
+    <!-- Carga del archivo JavaScript al final de la página -->
+    <script src="scripts/script.js"></script>
+</body>
+</html>
